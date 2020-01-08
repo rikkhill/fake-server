@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Install postgres to specified version
+
 PG_VERSION=9.4
 PG_CONF="/etc/postgresql/$PG_VERSION/main/postgresql.conf"
 PG_HBA="/etc/postgresql/$PG_VERSION/main/pg_hba.conf"
@@ -22,3 +24,6 @@ sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" "$PG_CONF"
 echo "host    all             all             all                     md5" >> "$PG_HBA"
 
 service postgresql restart
+
+# Install dstat for monitoring purposes
+apt-get install dstat
